@@ -4,6 +4,10 @@ from .models import Post, Comment
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Post model serializer
+    """
+
     comments = serializers.HyperlinkedRelatedField(
         many=True, read_only=True, view_name="comments-detail",
     )
@@ -15,6 +19,10 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    """
+    Comment model serializer
+    """
+
     class Meta:
         model = Comment
         fields = [
