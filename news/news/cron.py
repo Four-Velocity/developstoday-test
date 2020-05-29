@@ -5,11 +5,10 @@ from api.models import Post
 
 class NullifyUpvotes(CronJobBase):
 
-    TIME_STAMP = ["5:00"]
+    RUN_EVERY_MINS = 60*24
 
-    schedule = Schedule(run_at_times=TIME_STAMP)
+    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = "news.nullify_upvotes"
 
     def do(self):
-
         Post.objects.filter(upvotes__gt=0).update(upvotes=0)

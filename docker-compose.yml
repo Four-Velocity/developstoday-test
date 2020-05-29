@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: $DB_PASSWORD
+  web:
+    build: .
+    image: app
+    command: python manage.py runserver 0.0.0.0:8888
+    volumes:
+      - .:/news
+    ports:
+      - 80:8888
+    depends_on:
+      - migration
+    env_file:
+      - .env
+  migration:
+    build: .
+    image: app
+    command: python manage.py migrate
+    volumes:
+      - .:/news
+    links:
+      - db
+    depends_on:
+      - db
+    env_file:
+      - .env
+volumes:
+  postgres_data:
