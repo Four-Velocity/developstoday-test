@@ -10,15 +10,15 @@ Some points to clarify
 
 ## Launching
 To run this app you have to:
-* Add .env file to root *or you can just rename .env.example to .env and the app has to work*
-* run
+* ~~Add *.env* file to root *or you can just rename .env.example to .env and the app has to work*~~
+* Change *.env* if you want, but everything will work correctly if you pass this step
+* Run
 ```
 $ docker-compose build
 $ docker-compose run
 ```
 * The server will be running on [http://localhost](http://localhost)
 * Migrations apply automatically, however if you want to use admin page you must create superuser  
-* Additional you can change some variables in .env file, but they are already set up for properly work  
 
 ## Hosting
 The copy of this app is running on [Heroku](https://developstoday-test.herokuapp.com)    
