@@ -8,29 +8,64 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='title')),
-                ('link', models.URLField(verbose_name='URI of original post')),
-                ('created', models.DateTimeField(auto_now_add=True, verbose_name='creation date and time')),
-                ('upvotes', models.IntegerField(default=0, verbose_name='amount of upvotes')),
-                ('author', models.CharField(max_length=70, verbose_name='author')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100, verbose_name="title")),
+                ("link", models.URLField(verbose_name="URI of original post")),
+                (
+                    "created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="creation date and time"
+                    ),
+                ),
+                (
+                    "upvotes",
+                    models.IntegerField(default=0, verbose_name="amount of upvotes"),
+                ),
+                ("author", models.CharField(max_length=70, verbose_name="author")),
             ],
         ),
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('author', models.CharField(max_length=70, verbose_name='author')),
-                ('content', models.TextField(verbose_name='content')),
-                ('created', models.DateTimeField(auto_now_add=True, verbose_name='creation date and time')),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.Post', verbose_name='posts')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("author", models.CharField(max_length=70, verbose_name="author")),
+                ("content", models.TextField(verbose_name="content")),
+                (
+                    "created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="creation date and time"
+                    ),
+                ),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="api.Post",
+                        verbose_name="posts",
+                    ),
+                ),
             ],
         ),
     ]

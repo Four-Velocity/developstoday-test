@@ -12,6 +12,4 @@ class NullifyUpvotes(CronJobBase):
 
     def do(self):
 
-        Post.objects.filter(upvotes__gt=0).update(
-            upvotes=0
-        )
+        Post.objects.filter(upvotes__gt=0).update(upvotes=0)
