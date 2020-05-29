@@ -17,3 +17,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_METADATA_CLASS': 'rest_framework.metadata.SimpleMetadata',
 }
+
+CRON_CLASSES = [
+    "news.cron.NullifyUpvotes",
+]
