@@ -11,12 +11,11 @@ ENV PYTHONUNBUFFERED 1
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
-ENV PORT=8888
+RUN pip3 install --upgrade pip &&\
+    pip3 install pipenv &&\
+    pipenv install --system --dev
 
-RUN pip3 install --upgrade pip
-RUN pip3 install pipenv
-
-RUN pipenv install --system --dev
+RUN apt-get update && apt-get -y install cron
 
 EXPOSE 8888
 CMD gunicorn news.wsgi:application --bind 0000:$PORT

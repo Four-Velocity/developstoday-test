@@ -15,21 +15,32 @@ To run this app you have to:
 * Run
 ```
 $ docker-compose build
-$ docker-compose run
+$ docker-compose up web
 ```
 * The server will be running on [http://localhost](http://localhost)
-* Migrations apply automatically, however if you want to use admin page you must create superuser  
+* Migrations apply automatically, however if you want to use admin page you must create superuser 
+* Upvotes reset now runs automatically every 24 hours using [cron](news/bash/cron.sh) with [this preset](news/bash/cron-setup). As for the running style it was taken from [here](https://docs.docker.com/config/containers/multi-service_container/)
+* To apply upvotes reset manually run `$ docker-compose run web python manage.py runcrons` while the web docker container is running
 
 ## Hosting
 The copy of this app is running on [Heroku](https://developstoday-test.herokuapp.com)    
 I leave `DEBUG = True` so you will see what's wrong if smt. occurs  
 Also there is a superuser with login: `admin` and password: `SupaStrong`, so you can use admin page if you need it
 
+There are 2 heroku addons running alongside docker container:
+* Heroku postgres
+* Heroku scheduler (heroku cron analog)
+
+Upvotes reset runs every 10 minutes instead of 24 hours, so you can test it
 
 ## Code Style
 During the whole codding session I was using [Flake8](https://pypi.org/project/flake8/) and [PyRight](https://github.com/microsoft/pyright).  
 After that the whole project was reformated by Black.
 
 About errors:
-* Several with Flase8, 'cause the strings are to long
+* Several with Flake8, 'cause the strings are to long
 * One with PyRight, in [cron.py](news/news/cron.py) with import, but it works nice :confused:
+
+## Why django-cron, not celery?
+The answer is simple, I find this package more lightweight.
+Also in my opinion for purpose of resetting upvotes the api endpoint format *http://example.com/api/reset_upvotes/?key=SUPA_SECRAT_KEY/* and simple curl request in cron would be also good solution, but I think it's too late to change something.
