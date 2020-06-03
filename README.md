@@ -1,5 +1,5 @@
 # DevelopsToday Test Task
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/18c701636f61fee3f8a8)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/10894241/SztG46io?version=latest)
 [![Heroku](https://www.herokucdn.com/deploy/button.svg)](https://developstoday-test.herokuapp.com)
 [![Code style: Black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge&logo=appveyor)](https://github.com/psf/black)
 [![Linter: Flake8](https://img.shields.io/badge/Linter-Flake8-9cf?style=for-the-badge&logo=appveyor)](https://pypi.org/project/flake8/)
